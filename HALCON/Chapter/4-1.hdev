@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>read_image (Clip, 'clip')</l>
+<l>threshold (Clip, Region, 6, 60)</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 3500, 6400)</l>
+<l>orientation_region (SelectedRegions, Phi)</l>
+<l>area_center (SelectedRegions, Area, Row, Column)</l>
+<l>for Index := 0 to |Phi|-1 by 1</l>
+<l>    dev_disp_text (deg(Phi[Index]) + ' degrees', 'image', \
+    Row[Index], Column[Index], 'black', [], [])</l>
+<l>endfor</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
