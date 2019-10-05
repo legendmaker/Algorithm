@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>cont:=-3</l>
+<l>if (cont&gt;=1)</l>
+<l>    cont:=cont-1</l>
+<l>elseif (cont&lt;=-1)</l>
+<l>    cont:=cont+1</l>
+<l>else</l>
+<l>    cont:=cont+2</l>
+<l>endif</l>
+<c></c>
+<l>switch (cont)</l>
+<l>case 1:</l>
+<c>    </c>
+<l>endswitch</l>
+<c></c>
+<l>In:=1</l>
+<l>In_Sum:=0</l>
+<l>while (In&lt;=100)</l>
+<l>    In_Sum:=In_Sum+In</l>
+<l>    In:=In+10</l>
+<l>endwhile</l>
+<l>for Index := 1 to 5 by 1</l>
+<l>endfor</l>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 400, 400, 'white', WindowHandle)</l>
+<l>dev_set_color ('red')</l>
+<l>disp_arrow (WindowHandle, 255-20, 255-20, 255, 255, 1)</l>
+<l>disp_message (WindowHandle, '显示文字1', 'window', 20, 20, 'black', 'true')</l>
+<l>dev_set_color ('blue')</l>
+<l>set_tposition (WindowHandle, 40, 40)</l>
+<l>write_string (WindowHandle, '显示文字2')</l>
+<l>set_tposition (WindowHandle, 255, 255)</l>
+<l>* read_string (WindowHandle, 'Default', 32, OutString)</l>
+<l>read_image (Earth, 'earth.png')</l>
+<l>rgb1_to_gray (Earth, GrayImage)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
