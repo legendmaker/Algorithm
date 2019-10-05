@@ -37,6 +37,23 @@
 <l>* read_string (WindowHandle, 'Default', 32, OutString)</l>
 <l>read_image (Earth, 'earth.png')</l>
 <l>rgb1_to_gray (Earth, GrayImage)</l>
+<l>read_image (Image, 'fabrik')</l>
+<l>regiongrowing (Image, Regions, 3, 3, 6, 100)</l>
+<l>region_to_mean (Regions, Image, ImageMean)</l>
+<l>dev_open_window (0, 0, 400, 400, 'black', WindowHandle1)</l>
+<l>dev_display (ImageMean)</l>
+<l>read_image (Image1, 'a01.png')</l>
+<l>copy_image (Image1, DupImage)</l>
+<l>regiongrowing (DupImage, Regions1, 3, 3, 1, 100)</l>
+<l>region_to_bin (Regions1, BinImage, 255, 0, 512, 512)</l>
+<l>region_to_label (Regions1, ImageLabel, 'int4', 512, 512)</l>
+<c></c>
+<l>I_sum:=0.0</l>
+<l>for Index1 := 1 to 99 by 2</l>
+<l>       I_sum:=I_sum+(1.0/Index1)</l>
+<l>endfor</l>
+<c></c>
+<l>bb:=1.0/2.0</l>
 <c></c>
 </body>
 <docu id="main">
