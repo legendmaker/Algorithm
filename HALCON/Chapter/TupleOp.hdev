@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* users guide 279页</c>
+<c>*</c>
+<c></c>
+<l>Var:=[2,4,8,16,16,32]</l>
+<l>a:=[1,Var,[64,128]]</l>
+<l>b:=|Var|</l>
+<l>c:=Var[2:4]</l>
+<l>tuple_select_mask (Var, [1,0,0,1,1,1], Selected1)</l>
+<l>tuple_remove (Var, [2,3], Reduced)</l>
+<l>tuple_select (Var, [0,2,4], Selected)</l>
+<l>tuple_find (Var, [8,16], Indices)</l>
+<l>tuple_uniq (Var, Uniq)</l>
+<l>d:=uniq(Var)</l>
+<l>tuple := []</l>
+<l>for i := 1 to 100 by 1</l>
+<l>    tuple := [tuple,4711]</l>
+<l>endfor</l>
+<l>tuple:=gen_tuple_const(100,4711)</l>
+<l>Sequence := [1:1:1000]</l>
+<l>Sequence := [1:1000]</l>
+<l>Sequence := [1:2:1000]</l>
+<c></c>
+<l>tuple_new:=gen_tuple_const(|tuple|,4712)</l>
+<l>tuple_new:=(tuple*0)+4712</l>
+<c>*</c>
+<c>* page 282</c>
+<c>*</c>
+<l>judge:=is_int(tuple)</l>
+<l>judge:=is_mixed(tuple)</l>
+<l>judge:=is_number(tuple)</l>
+<l>judge:=is_real(tuple)</l>
+<l>judge:=is_string(tuple)</l>
+<l>judge:=type(tuple)</l>
+<c></c>
+<l>judge:=is_int_elem(tuple)</l>
+<c></c>
+<l>f:=23$'10.10f'</l>
+<l>f:=(1/3.0)$'10.10f'</l>
+<c></c>
+<l>tuple:=[1.0,2.0,3.0,1.0]</l>
+<l>cu:=cumul(tuple)</l>
+<l>de:=deviation(tuple)</l>
+<l>me:=median(tuple)</l>
+<l>st:=sort(tuple)</l>
+<l>iv:=inverse(st)</l>
+<l>str:='hello'</l>
+<l>ordd:=ords(str)</l>
+<c></c>
+<c>*</c>
+<c>* Vectors</c>
+<c>*</c>
+<l>vectorT:={1,2,3}</l>
+<l>t1:=1</l>
+<l>vectorT:={t1,t1*2,3}</l>
+<c></c>
+<l>dev_close_window()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>read_image (Image, 'clip')</l>
+<l>threshold (Image, Region, 0, 63)</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>vectorO:={Image,Region,ConnectedRegions}</l>
+<c></c>
+<l>vectorV := {vectorT, {[4,5,6,7], [8,9]}}</l>
+<l>vectorV2 := {{1,2}, {}}</l>
+<c></c>
+<l>tuple:=vectorT.at(0)</l>
+<l>region:=vectorO.at(1)</l>
+<l>vector:=vectorV.at(0)</l>
+<l>tuple:=vectorV.at(1).at(1)</l>
+<c></c>
+<l>vectorT.at(2) := 33</l>
+<l>vectorE.at(4) := 'text'</l>
+<c></c>
+<l>for i:= 0 to 5 by 1</l>
+<l>vecT.at(i) := gen_tuple_const(i,5)</l>
+<l>endfor</l>
+<c></c>
+<l>vectorT.insert(1, 99)</l>
+<l>vectorT.remove(2)</l>
+<c></c>
+<l>i := vectorT.length()</l>
+<l>j := vectorV.length()</l>
+<l>k := vectorV.at(0).length()</l>
+<c></c>
+<c>**</c>
+<c>** error handling ，2中方式，全局捕获dev_set_check ('~give_error')，</c>
+<c>**  或者通过try捕获 dev_set_check ('give_error')</c>
+<c>**</c>
+<l>global tuple ErrorCode</l>
+<l>dev_error_var(ErrorCode, 1)</l>
+<l>dev_set_check ('give_error')</l>
+<c></c>
+<l>try</l>
+<c>    *执行错误</c>
+<l>    ordd:=ord(str)  </l>
+<l>catch (Exception)</l>
+<l>    ErrorCode111:=Exception[0]</l>
+<l>    dev_get_exception_data (Exception, 'error_code', Value)</l>
+<l>endtry</l>
+<l>if (Value==H_MSG_TRUE)</l>
+<l>    dev_disp_text ('检测没有错误', 'window', 'top', 'left', 'green', [], [])</l>
+<l>else </l>
+<l>    dev_disp_text ('检测错误代码：'+Value, 'window', 'top', 'left', 'red', [], [])</l>
+<l>endif</l>
+<c></c>
+<c>*</c>
+<c>*  多线程</c>
+<c>*</c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
