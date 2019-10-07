@@ -26,7 +26,72 @@
 <l>crop_domain (Image4, ImagePart)</l>
 <l>get_grayval (ImagePart, 10, 10, Grayval)</l>
 <l>set_grayval (ImagePart, 10, 10, 255)</l>
+<c>*</c>
+<c>*4-3</c>
+<c>*</c>
+<l>read_image (Image5, 'mreut')</l>
+<l>dev_close_window ()</l>
+<l>get_image_size (Image5, Width1, Height1)</l>
+<l>dev_open_window (0, 0, Width1, Height1, 'white', WindowHandle)</l>
+<l>dev_display (Image5)</l>
+<l>dev_set_color ('red')</l>
+<l>threshold (Image5, Region, 0, 130)</l>
 <c></c>
+<c>*</c>
+<c>* 4-5</c>
+<c>*</c>
+<l>read_image (Image6, 'mreut')</l>
+<l>dev_close_window ()</l>
+<l>get_image_size (Image6, Width2, Height2)</l>
+<l>dev_open_window (0, 0, Width2, Height2, 'white', WindowHandle1)</l>
+<l>dev_display (Image6)</l>
+<l>median_image (Image6, ImageMedian, 'circle', 2, 'mirrored')</l>
+<l>regiongrowing (ImageMedian, Regions, 1, 1, 2, 100)</l>
+<c></c>
+<c>*</c>
+<c>* 4-6</c>
+<c>*</c>
+<l>read_image (Image7, 'fabrik')</l>
+<l>dev_close_window ()</l>
+<l>get_image_size (Image7, Width3, Height3)</l>
+<l>dev_open_window (0, 0, Width3, Height3, 'black', WindowHandle2)</l>
+<l>dev_display (Image7)</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_set_color ('red')</l>
+<l>gen_rectangle1 (ROI_0, 36, 289, 407, 340)</l>
+<l>dev_set_color ('green')</l>
+<l>gen_rectangle1 (ROI_1, 78, 178, 144, 244)</l>
+<l>gray_histo (ROI_0, Image7, AbsoluteHisto, RelativeHisto)</l>
+<l>gray_histo (ROI_1, Image7, AbsoluteHisto1, RelativeHisto1)</l>
+<l>dev_set_color ('red')</l>
+<l>gen_region_histo (Region1, AbsoluteHisto, 255, 255, 1)</l>
+<l>dev_set_color ('green')</l>
+<l>gen_region_histo (Region2, AbsoluteHisto1, 255, 255, 1)</l>
+<c></c>
+<c>*</c>
+<c>* 4-7</c>
+<c>*</c>
+<l>read_image (Image8, 'multiple_dies_01')</l>
+<l>threshold (Image8, Region3, 200, 255)</l>
+<l>connection (Region3, ConnectedRegions)</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 150, 99999)</l>
+<l>union1 (SelectedRegions, RegionUnion)</l>
+<l>union2 (RegionUnion, Region3, RegionUnion1)</l>
+<l>difference (Region3, RegionUnion1, RegionDifference)</l>
+<l>complement (RegionDifference, RegionComplement)</l>
+<c></c>
+<c>*</c>
+<c>*  4-8</c>
+<c>*</c>
+<l>dev_set_color ('yellow')</l>
+<l>gen_region_points (Region4, 100, 100)</l>
+<l>disp_line (WindowHandle2, 32, 32, 64, 64)</l>
+<l>gen_region_line (RegionLines, 100, 50, 150, 250)</l>
+<l>gen_region_line (RegionLines1, 200, 200, 50, 50)</l>
+<l>intersection (RegionLines, RegionLines1, RegionIntersection)</l>
+<l>get_region_points (RegionIntersection, Rows, Columns)</l>
+<l>orientation_region (RegionLines, Phi)</l>
+<l>ddeg:=deg(Phi)</l>
 </body>
 <docu id="main">
 <parameters/>
