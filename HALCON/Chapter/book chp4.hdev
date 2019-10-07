@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>*    4-1</c>
+<c>*</c>
+<l>read_image (Image, 'claudia.png')</l>
+<l>count_channels (Image, Channels)</l>
+<l>for Index := 1 to Channels by 1 </l>
+<l>    access_channel (Image, channel1, Index)</l>
+<l>endfor</l>
+<l>decompose3 (Image, Image1, Image2, Image3)</l>
+<l>trans_from_rgb (Image1, Image1, Image1, ImageResult1, ImageResult2, ImageResult3, 'hsv')</l>
+<l>compose2 (Image3, Image2, MultiChannelImage)</l>
+<l>append_channel (MultiChannelImage, Image1, ImageExtended)</l>
+<c></c>
+<c>*</c>
+<c>*4-2</c>
+<c>*</c>
+<l>gen_image_const (Image4, 'byte', 50, 50)</l>
+<l>get_image_size (Image4, Width, Height)</l>
+<l>gen_image_proto (Image4, Image4, 164)</l>
+<l>get_domain (Image4, Domain)</l>
+<l>crop_domain (Image4, ImagePart)</l>
+<l>get_grayval (ImagePart, 10, 10, Grayval)</l>
+<l>set_grayval (ImagePart, 10, 10, 255)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
