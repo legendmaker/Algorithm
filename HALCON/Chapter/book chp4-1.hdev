@@ -92,6 +92,8 @@
 <l>get_region_points (RegionIntersection, Rows, Columns)</l>
 <l>orientation_region (RegionLines, Phi)</l>
 <l>ddeg:=deg(Phi)</l>
+<c></c>
+<c></c>
 </body>
 <docu id="main">
 <parameters/>

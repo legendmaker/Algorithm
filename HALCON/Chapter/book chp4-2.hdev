@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>*4-9</c>
+<c>*</c>
+<l>read_image (Image, 'clip')</l>
+<l>dev_close_window ()</l>
+<l>get_image_size (Image, Width, Height)</l>
+<l>dev_open_window (0, 0, Width, Height, 'white', WindowHandle)</l>
+<l>RowA1:=255</l>
+<l>ColumnA1:=10</l>
+<l>RowA2:=255</l>
+<l>ColumnA2:=501</l>
+<l>dev_set_color ('black')</l>
+<l>disp_line (WindowHandle, RowA1, ColumnA1, RowA2, ColumnA2)</l>
+<l>RowB1:=255</l>
+<l>ColumnB1:=255</l>
+<l>for Index := 1 to 5 by 1</l>
+<l>    RowB2:=255+sin(rad(Index))*200</l>
+<l>    ColumnB2:=255+cos(rad(Index))*200</l>
+<l>    disp_line (WindowHandle, RowB1, ColumnB1, RowB2, ColumnB2)   </l>
+<l>    gen_region_line (RegionLines, RowB1, ColumnB1, RowB2, ColumnB2)    </l>
+<l>    orientation_region (RegionLines, Phi)</l>
+<l>    line_orientation (RowB1, ColumnB1, RowB2, ColumnB2, Phi1)</l>
+<l>    line_position (RowB1, ColumnB1, RowB2, ColumnB2, RowCenter, ColCenter, Length, Phi2)</l>
+<l>    angle_ll (RowA1, ColumnA1, RowA2, ColumnA2, RowB1, ColumnB1, RowB2, ColumnB2, Angle)</l>
+<l>endfor</l>
+<l>stop ()</l>
+<l>threshold (Image, Region, 0, 70)</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>dev_clear_window ()</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 5000, 10000)</l>
+<l>orientation_region (SelectedRegions, Phi3)</l>
+<l>area_center (SelectedRegions, Area, Row, Column)</l>
+<l>dev_set_color ('red')</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_set_line_width (7)</l>
+<l>Length:=80</l>
+<l>disp_arrow (WindowHandle, Row, Column, Row+cos(Phi3+1.5708)*Length, Column+sin(Phi3+1.5708)*Length, 3)</l>
+<c>*</c>
+<c>*4-10</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle1)</l>
+<l>dev_set_color ('red')</l>
+<l>gen_region_points (Region1, 100, 100)</l>
+<l>get_region_points (Region1, Rows, Columns)</l>
+<l>disp_line (WindowHandle1, Rows, Columns, 64, 64)</l>
+<l>gen_region_line (RegionLines1, 100, 50, 150, 250)</l>
+<l>gen_region_line (RegionLines2, 45, 150, 125, 225)</l>
+<l>get_region_points (RegionLines1, Rows1, Columns1)</l>
+<l>gen_region_line (RegionLines3, Rows, Columns, 150, 130)</l>
+<l>intersection (RegionLines1, RegionLines3, RegionIntersection)</l>
+<l>get_region_points (RegionIntersection, Rows2, Columns2)</l>
+<l>line_orientation (Rows, Columns, Rows2, Columns2, Phi4)</l>
+<l>gen_region_line (RegionLines4, Rows, Columns, Rows2, Columns2)</l>
+<l>orientation_region (RegionLines4, Phi5)</l>
+<l>line_position (Rows, Columns, Rows2, Columns2, RowCenter1, ColCenter1, Length1, Phi6)</l>
+<l>distance_pp (Rows, Columns, Rows2, Columns2, Distance)</l>
+<l>distance_pl (200, 200, Rows, Columns, Rows2, Columns2, Distance1)</l>
+<l>distance_ps (200, 200, Rows, Columns, Rows2, Columns2, DistanceMin, DistanceMax)</l>
+<l>distance_rr_min (RegionLines4, RegionLines2, MinDistance, Row1, Column1, Row2, Column2)</l>
+<l>distance_lr (RegionLines4, 45, 150, 125, 225, DistanceMin1, DistanceMax1)</l>
+<l>distance_sr (RegionLines4, 45, 150, 125, 225, DistanceMin2, DistanceMax2)</l>
+<c>*</c>
+<c>* 4-11</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'white', WindowHandle2)</l>
+<l>gen_circle (Circle, 200, 200, 100.5)</l>
+<l>gen_ellipse (Ellipse, 200, 200, 0, 100, 60)</l>
+<l>gen_rectangle1 (Rectangle, 30, 20, 100, 200)</l>
+<l>gen_rectangle2 (Rectangle1, 300, 200, 15, 100, 20)</l>
+<l>Button:=1</l>
+<l>Rows:=[]</l>
+<l>Cols:=[]</l>
+<l>dev_set_color ('red')</l>
+<l>dev_clear_window ()</l>
+<l>while (Button==1)</l>
+<l>    get_mbutton (WindowHandle2, Row3, Column3, Button)</l>
+<l>    Rows:=[Rows,Row3]</l>
+<l>    Cols:=[Cols,Column3]</l>
+<l>    disp_circle (WindowHandle2, Row3, Column3, 3)</l>
+<l>endwhile</l>
+<l>dev_clear_window ()</l>
+<l>gen_region_polygon (Region2, Rows, Cols)</l>
+<l>dev_display (Region2)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
