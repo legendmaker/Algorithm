@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>read_image (Image, 'fabrik')</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>dev_set_color ('dim gray')</l>
+<l>dev_set_draw ('fill')</l>
+<l>regiongrowing (Image, Regions, 1, 1, 3, 400)</l>
+<l>elliptic_axis (Regions, Ra, Rb, Phi)</l>
+<l>area_center (Regions, Area, Row, Column)</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_set_color ('green')</l>
+<l>disp_ellipse (WindowHandle, Row, Column, Phi, Ra, Rb)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

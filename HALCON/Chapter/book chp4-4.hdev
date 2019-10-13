@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>*4-14</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>read_image (Image, 'screw_thread.png')</l>
+<l>get_image_size (Image, Width, Height)</l>
+<l>dev_open_window (0, 0, Width/2, Height/2, 'white', WindowHandle)</l>
+<l>threshold (Image, Region, 0, 100)</l>
+<l>fill_up (Region, RegionFillUp)</l>
+<l>circularity (RegionFillUp, Circularity)</l>
+<c></c>
+<l>shape_trans (RegionFillUp, RegionTrans, 'rectangle1')</l>
+<l>circularity (RegionTrans, Circularity1)</l>
+<c></c>
+<l>smallest_rectangle1 (RegionTrans, Row1, Column1, Row2, Column2)</l>
+<l>circularity (RegionTrans, Circularity2)</l>
+<c></c>
+<l>shape_trans (RegionTrans, RegionTrans1, 'rectangle2')</l>
+<l>circularity (RegionTrans1, Circularity3)</l>
+<c></c>
+<l>smallest_rectangle2 (RegionTrans1, Row, Column, Phi, Length1, Length2)</l>
+<l>circularity (RegionTrans1, Circularity4)</l>
+<c></c>
+<l>shape_trans (RegionTrans1, RegionTrans2, 'outer_circle')</l>
+<l>smallest_circle (RegionTrans2, Row3, Column3, Radius)</l>
+<c></c>
+<l>circularity (RegionTrans2, Circularity5)</l>
+<c></c>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>*4-16</c>
+<c>*</c>
+<l>read_image (Image, 'particle')</l>
+<l>threshold_sub_pix (Image, Border, 128)</l>
+<l>edges_sub_pix (Image, Edges, 'canny', 1, 20, 40)</l>
+<l>select_shape_xld (Edges, SelectedXLD, 'area', 'and', 150, 99999)</l>
+<l>select_contours_xld (Border, SelectedContours, 'contour_length', 0.5, 200, -0.5, 0.5)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
