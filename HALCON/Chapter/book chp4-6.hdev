@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>*4-17</c>
+<c>*</c>
+<l>read_image (Image, 'mvtec_logo.png')</l>
+<l>get_image_size (Image, Width, Height)</l>
+<l>dev_open_window (0, 0, Width, Height, 'white', WindowHandle)</l>
+<l>threshold (Image, Region, 0, 125)</l>
+<l>gen_contour_region_xld (Region, Contours, 'border')</l>
+<l>select_shape_xld (Contours, SelectedXLD, 'area', 'and', 14500, 99999)</l>
+<l>get_contour_xld (SelectedXLD, Row, Col)</l>
+<l>dev_clear_window ()</l>
+<l>gen_contour_polygon_xld (Contour, Row, Col)</l>
+<l>gen_polygons_xld (Contour, Polygons, 'ramer', 2)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
