@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_open_window (0, 0, 512, 512, 'white', WindowHandle)</l>
+<l>read_image (Image, 'screw_thread.png')</l>
+<l>threshold_sub_pix (Image, Border, 128)</l>
+<l>edges_sub_pix (Image, Edges, 'canny', 1, 20, 40)</l>
+<l>threshold (Image, Region, 0, 100)</l>
+<l>select_shape_xld (Edges, SelectedXLD, 'area', 'and', 20000, 100000)</l>
+<l>fill_up (Region, RegionFillUp)</l>
+<l>gen_contour_region_xld (RegionFillUp, Contours, 'border')</l>
+<l>area_center_xld (Contours, Area, Row, Column, PointOrder)</l>
+<l>select_shape_xld (Contours, SelectedXLD1, 'area', 'and', 150, 300000)</l>
+<l>get_contour_xld (SelectedXLD1, Row1, Col)</l>
+<l>gen_contour_polygon_xld (Contour, 150, 450)</l>
+<l>gen_contour_polygon_xld (Contour1, [150,300], [400,500])</l>
+<l>query_contour_attribs_xld (SelectedXLD, Attribs)</l>
+<l>get_contour_attrib_xld (SelectedXLD, 'angle', Attrib)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* 4-21</c>
+<c>*</c>
+<l>gen_circle (Circle, 135.5, 135.5, 135.5)</l>
+<l>gen_ellipse_contour_xld (ContEllipse, 135.5, 135.5, 0, 100, 50, 0, rad(360), 'positive', 1.5)</l>
+<l>gen_circle_contour_xld (ContCircle, 135.5, 135.5, 135.5, 0, 6.28318, 'positive', 1)</l>
+<l>gen_polygons_xld (ContCircle, Polygons, 'ramer', 35)</l>
+<l>test_self_intersection_xld (Polygons, 'true', DoesIntersect)</l>
+<l>area_center_xld (ContCircle, Area, Row, Column, PointOrder)</l>
+<l>area_center (Circle, Area1, Row1, Column1)</l>
+<l>gen_contour_polygon_xld (Contour, [249,350,225,249], [299,299,349,299])</l>
+<l>area_center_xld (Contour, Area2, Row2, Column2, PointOrder1)</l>
+<l>test_self_intersection_xld (Contour, 'true', DoesIntersect1)</l>
+<l>area_center_points_xld (Contour, Area3, Row3, Column3)</l>
+<l>get_polygon_xld (Polygons, Row4, Col, Length, Phi)</l>
+<l>elliptic_axis_xld (Contour, Ra, Rb, Phi1)</l>
+<l>circularity_xld (Contour, Circularity)</l>
+<l>convexity_xld (Contour, Convexity)</l>
+<l>compactness_xld (Contour, Compactness)</l>
+<l>diameter_xld (Contour, Row11, Column11, Row21, Column21, Diameter)</l>
+<l>smallest_rectangle1_xld (Contour, Row12, Column12, Row22, Column22)</l>
+<l>smallest_rectangle2_xld (Contour, Row5, Column4, Phi2, Length1, Length2)</l>
+<l>moments_xld (Contour, M11, M20, M02)</l>
+<c>*</c>
+<c>* 4-22</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'white', WindowHandle)</l>
+<l>gen_circle_contour_xld (ContCircle1, 290, 260, 100, 0, 6.28318, 'positive', 1)</l>
+<l>query_contour_global_attribs_xld (ContCircle1, Attribs)</l>
+<l>regress_contours_xld (ContCircle1, RegressContours, 'no', 1)</l>
+<l>query_contour_global_attribs_xld (RegressContours, Attribs1)</l>
+<l>get_contour_global_attrib_xld (RegressContours, 'regr_norm_row', Attrib)</l>
+<l>get_regress_params_xld (RegressContours, Length3, Nx, Ny, Dist, Fpx, Fpy, Lpx, Lpy, Mean, Deviation)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
