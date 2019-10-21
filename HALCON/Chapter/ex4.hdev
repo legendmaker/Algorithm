@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* 1</c>
+<c>*</c>
+<l>read_image (Image, 'ocr/chars_training_07.png')</l>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<l>threshold (GrayImage, Regions, 0, 150)</l>
+<l>connection (Regions, ConnectedRegions)</l>
+<l>shape_trans (ConnectedRegions, RegionTrans, 'convex')</l>
+<l>shape_trans (ConnectedRegions, RegionTrans1, 'outer_circle')</l>
+<l>shape_trans (ConnectedRegions, RegionTrans2, 'inner_rectangle1')</l>
+<l>shape_trans (ConnectedRegions, RegionTrans3, 'ellipse')</l>
+<c>*</c>
+<c>* 2</c>
+<c>*</c>
+<c></c>
+<c>*</c>
+<c>* 3</c>
+<c>*</c>
+<l>dev_clear_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>read_image (Image1, 'E:/Github/Algorithm/HALCON/Images/ex4.3.png')</l>
+<l>threshold (Image1, Regions1, 0, 20)</l>
+<l>connection (Regions1, ConnectedRegions1)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
