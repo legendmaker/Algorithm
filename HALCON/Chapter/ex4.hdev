@@ -26,6 +26,10 @@
 <l>read_image (Image1, 'E:/Github/Algorithm/HALCON/Images/ex4.3.png')</l>
 <l>threshold (Image1, Regions1, 0, 20)</l>
 <l>connection (Regions1, ConnectedRegions1)</l>
+<l>count_obj (ConnectedRegions, Number)</l>
+<l>shape_trans (ConnectedRegions1, RegionTrans4, 'outer_circle')</l>
+<c></c>
+<l>dev_display (RegionTrans4)</l>
 <c></c>
 </body>
 <docu id="main">
