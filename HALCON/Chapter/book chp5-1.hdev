@@ -47,8 +47,26 @@
 <l>dev_display (ImageSub)</l>
 <l>disp_message (WindowHandle, 'Resulting Image of subtraction', 'window', 12, 12, 'black', 'true')</l>
 <c>*</c>
+<c>* 5-5</c>
 <c>*</c>
-<c>*</c>
+<l>dev_close_window ()</l>
+<l>dev_update_off ()</l>
+<l>read_image (Scene00, 'autobahn/scene_00')</l>
+<l>gen_image_gray_ramp (ImageGrayRamp, 0.2, 0.2, 128, 256, 256, 512, 512)</l>
+<l>dev_open_window_fit_image (Scene00, 0, 0, -1, -1, WindowHandle2)</l>
+<l>set_display_font (WindowHandle2, 16, 'mono', 'true', 'false')</l>
+<l>dev_display (Scene00)</l>
+<l>disp_message (WindowHandle2, 'Divide the image by a gray value ramp', 'window', 12, 12, 'black', 'true')</l>
+<l>disp_continue_message (WindowHandle2, 'black', 'true')</l>
+<l>stop ()</l>
+<l>dev_display (ImageGrayRamp)</l>
+<l>disp_message (WindowHandle2, 'Created gray value ramp', 'window', 12, 12, 'black', 'true')</l>
+<l>disp_continue_message (WindowHandle2, 'black', 'true')</l>
+<l>stop ()</l>
+<l>div_image (Scene00, ImageGrayRamp, ImageResult1, 255, 0)</l>
+<l>dev_display (ImageResult1)</l>
+<l>disp_message (WindowHandle2, 'Resulting image of the division', 'window', 12, 12, 'black', 'true')</l>
+<c></c>
 </body>
 <docu id="main">
 <parameters/>
