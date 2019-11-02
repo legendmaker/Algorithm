@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* 5-7</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'white', WindowHandle)</l>
+<l>dev_set_color ('black')</l>
+<l>draw_region (Region, WindowHandle)</l>
+<l>hom_mat2d_identity (HomMat2DIdentity)</l>
+<l>hom_mat2d_rotate (HomMat2DIdentity, -0.3, 256, 256, HomMat2DRotate)</l>
+<l>hom_mat2d_scale (HomMat2DRotate, 1.5, 1.5, 256, 256, HomMat2DScale)</l>
+<l>hom_mat2d_translate (HomMat2DScale, 32, 32, HomMat2DTranslate)</l>
+<l>affine_trans_region (Region, RegionAffineTrans, HomMat2DTranslate, 'nearest_neighbor')</l>
+<l>dev_clear_window ()</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_set_color ('red')</l>
+<l>dev_display (Region)</l>
+<l>dev_set_color ('green')</l>
+<l>dev_display (RegionAffineTrans)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
