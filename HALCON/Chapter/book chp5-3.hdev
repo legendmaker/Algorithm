@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* 5-8</c>
+<c>*</c>
+<l>dev_update_window ('off')</l>
+<l>dev_update_var ('off')</l>
+<l>dev_update_time ('off')</l>
+<l>dev_update_pc ('off')</l>
+<l>dev_set_color ('red')</l>
+<l>read_image (Image, 'forest_road')</l>
+<l>threshold (Image, Region, 160, 255)</l>
+<l>opening_circle (Region, RegionOpening, 9.5)</l>
+<l>hom_mat2d_identity (HomMat2DIdentity)</l>
+<l>Scale:=1</l>
+<l>for Phi := 0 to 360 by 1</l>
+<l>    hom_mat2d_rotate (HomMat2DIdentity, rad(Phi), 256, 256, HomMat2DRotate)</l>
+<l>    hom_mat2d_scale (HomMat2DRotate, Scale, Scale, 256, 256, HomMat2DScale)</l>
+<l>    affine_trans_image (Image, ImageAffineTrans, HomMat2DScale, 'nearest_neighbor', 'false')</l>
+<l>    affine_trans_region (RegionOpening, RegionAffineTrans, HomMat2DScale, 'nearest_neighbor')</l>
+<l>    dev_display (ImageAffineTrans)</l>
+<l>    dev_display (RegionAffineTrans)</l>
+<l>    Scale:=Scale/1.005</l>
+<l>endfor</l>
+<l>dev_update_pc ('on')</l>
+<l>dev_update_time ('on')</l>
+<l>dev_update_var ('on')</l>
+<l>dev_update_window ('on')</l>
+<c>*</c>
+<c>* 5-9</c>
+<c>*</c>
+<l>dev_update_off ()</l>
+<l>dev_close_window ()</l>
+<l>read_image (Image_slanted, 'datacode/ecc200/ecc200_to_preprocess_001')</l>
+<l>dev_open_window_fit_image (Image_slanted, 0, 0, -1, -1, WindowHandle)</l>
+<l>dev_set_color ('white')</l>
+<l>dev_set_line_width (3)</l>
+<l>stop ()</l>
+<l>PxCoordCorners:=[130,225,290,63]</l>
+<l>PyCoordCorners := [101,96,289,269]</l>
+<l>QxCoordCorners:=[70,270,270,70]</l>
+<l>QyCoordCorners:=[100,100,300,300]</l>
+<l>gen_cross_contour_xld (Cross, PxCoordCorners, PyCoordCorners, 6, 0.785398)</l>
+<l>gen_cross_contour_xld (Cross1, QxCoordCorners, QyCoordCorners, 6, 0.785398)</l>
+<l>dev_display (Image_slanted)</l>
+<l>dev_display (Cross)</l>
+<l>dev_display(Cross1)</l>
+<l>stop ()</l>
+<l>hom_vector_to_proj_hom_mat2d (PxCoordCorners, PyCoordCorners, [1,1,1,1], QxCoordCorners, QyCoordCorners, [1,1,1,1], 'normalized_dlt', HomMat2D)</l>
+<l>projective_trans_image (Image_slanted, Image_rectified, HomMat2D, 'bilinear', 'false', 'false')</l>
+<l>create_data_code_2d_model ('Data Matrix ECC 200', [], [], DataCodeHandle)</l>
+<l>find_data_code_2d (Image_rectified, SymbolXLDs, DataCodeHandle, [], [], ResultHandles, DecodedDataStrings)</l>
+<l>dev_display (Image_slanted)</l>
+<l>dev_display (Image_rectified)</l>
+<l>dev_display (SymbolXLDs)</l>
+<l>disp_message (WindowHandle, 'Decoding successful', 'window', 12, 12, 'black', 'true')</l>
+<l>set_display_font (WindowHandle, 12, 'mono', 'true', 'false')</l>
+<l>disp_message (WindowHandle, DecodedDataStrings, 'window', 350, 70, 'forest green', 'true')</l>
+<l>clear_data_code_2d_model (DataCodeHandle)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
