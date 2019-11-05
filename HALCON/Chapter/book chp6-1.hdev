@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'E:/Repos/Algorithm/HALCON/Images/lena512color.tiff')</l>
+<l>dev_close_window ()</l>
+<l>get_image_size (Image, Width, Height)</l>
+<l>dev_open_window_fit_size (0, 0, Width, Height, -1, -1, WindowHandle)</l>
+<l>dev_display (Image)</l>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<l>* dump_window (WindowHandle, 'bmp', 'E:/Repos/Algorithm/HALCON/Chapter/result/灰度化')</l>
+<l>invert_image (GrayImage, ImageInvert)</l>
+<l>emphasize (GrayImage, ImageEmphasize, Width, Height, 1)</l>
+<l>scale_image (GrayImage, ImageScaled1, 1, 100)</l>
+<l>scale_image (ImageScaled1, ImageScaled2, 1, -100)</l>
+<l>scale_image (GrayImage, ImageScaled, 0.5, 1)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
