@@ -16,6 +16,26 @@
 <l>scale_image (ImageScaled1, ImageScaled2, 1, -100)</l>
 <l>scale_image (GrayImage, ImageScaled, 0.5, 1)</l>
 <c></c>
+<c>*</c>
+<c>* 6-2</c>
+<c>*</c>
+<l>threshold (GrayImage, Region, 0, 255)</l>
+<l>min_max_gray (Region, ImageScaled, 0, Min, Max, Range)</l>
+<l>scale_image_max (ImageScaled, ImageScaleMax)</l>
+<c></c>
+<c>*</c>
+<c>* 6-3</c>
+<c>*</c>
+<l>log_image (GrayImage, LogImage, 'e')</l>
+<c></c>
+<c>*</c>
+<c>* 6-4</c>
+<c>*</c>
+<l>pow_image (GrayImage, PowImage, 0.5)</l>
+<l>pow_image (GrayImage, PowImage1, 1)</l>
+<l>pow_image (GrayImage, PowImage2, 2)</l>
+<c></c>
+<c></c>
 </body>
 <docu id="main">
 <parameters/>
