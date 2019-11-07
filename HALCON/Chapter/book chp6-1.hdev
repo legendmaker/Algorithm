@@ -35,6 +35,17 @@
 <l>pow_image (GrayImage, PowImage1, 1)</l>
 <l>pow_image (GrayImage, PowImage2, 2)</l>
 <c></c>
+<c>*</c>
+<c>* 6-5</c>
+<c>*</c>
+<l>gray_histo (Region, GrayImage, AbsoluteHisto, RelativeHisto)</l>
+<l>gen_region_histo (Region1, RelativeHisto, 255, 255, 1)</l>
+<c>*</c>
+<c>* 6-6</c>
+<c>*</c>
+<l>equ_histo_image (GrayImage, ImageEquHisto)</l>
+<l>gray_histo (Region, ImageEquHisto, AbsoluteHisto1, RelativeHisto1)</l>
+<l>gen_region_histo (Region2, AbsoluteHisto1, 255, 255, 1)</l>
 <c></c>
 </body>
 <docu id="main">
