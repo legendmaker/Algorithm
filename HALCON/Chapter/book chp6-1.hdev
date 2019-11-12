@@ -3,7 +3,7 @@
 <procedure name="main">
 <interface/>
 <body>
-<l>read_image (Image, 'E:/Repos/Algorithm/HALCON/Images/lena512color.tiff')</l>
+<l>read_image (Image, 'E:/Github/Algorithm/HALCON/Images/lena512color.tiff')</l>
 <l>dev_close_window ()</l>
 <l>get_image_size (Image, Width, Height)</l>
 <l>dev_open_window_fit_size (0, 0, Width, Height, -1, -1, WindowHandle)</l>
