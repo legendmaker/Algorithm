@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* 6-9</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>read_image (Image, 'monkey')</l>
+<l>get_image_size (Image, Width, Height)</l>
+<l>dev_open_window_fit_image (Image, 0, 0, -1, -1, WindowHandle)</l>
+<l>dev_display (Image)</l>
+<l>gauss_distribution (20, Distribution)</l>
+<l>add_noise_distribution (Image, ImageNoise, Distribution)</l>
+<l>mean_image (ImageNoise, ImageMean, 8, 8)</l>
+<l>sp_distribution (5, 5, Distribution1)</l>
+<l>add_noise_distribution (Image, ImageNoiseSp, Distribution1)</l>
+<l>median_image (ImageNoiseSp, ImageMedian, 'square', 3, 'mirrored')</l>
+<l>median_image (ImageNoiseSp, ImageMedian1, 'square', 5, 'mirrored')</l>
+<l>median_image (ImageNoiseSp, ImageMedian2, 'square', 7, 'mirrored')</l>
+<c></c>
+<c>*</c>
+<c>* 6-10</c>
+<c>*</c>
+<l>gen_lowpass (ImageLowpass, 0.1, 'none', 'dc_center', Width, Height)</l>
+<l>fft_generic (ImageNoiseSp, ImageFFT, 'to_freq', -1, 'sqrt', 'dc_center', 'complex')</l>
+<l>convol_fft (ImageFFT, ImageLowpass, ImageConvol)</l>
+<l>fft_generic (ImageConvol, ImageFFT1, 'from_freq', 1, 'sqrt', 'dc_center', 'byte')</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
