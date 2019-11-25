@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* 7-1</c>
+<c>*</c>
+<l>read_image (Image, 'fabrik')</l>
+<l>threshold (Image, Region, 179, 255)</l>
+<l>dev_display (Image)</l>
+<l>dev_display (Region)</l>
+<c>*</c>
+<c>* 7-2</c>
+<c>*</c>
+<l>read_image (Image1, 'letters')</l>
+<l>get_image_size (Image1, Width, Height)</l>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, Width, Height, 'black', WindowHandle)</l>
+<l>dev_set_color ('red')</l>
+<l>gen_rectangle1 (Rectangle, 0, 0, Height, Width)</l>
+<l>gray_histo (Rectangle, Image1, AbsoluteHisto, RelativeHisto)</l>
+<l>histo_to_thresh (AbsoluteHisto, 8, MinThresh, MaxThresh)</l>
+<l>dev_set_colored (12)</l>
+<l>threshold (Image1, Region1, MinThresh[0], MaxThresh[0])</l>
+<l>dev_display (Region1)</l>
+<c>*</c>
+<c>* 7-3</c>
+<c>*</c>
+<l>dev_update_off ()</l>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle1)</l>
+<l>set_display_font (WindowHandle1, 14, 'mono', 'true', 'false')</l>
+<l>read_image (Image2, 'dip_switch/dip_switch_01')</l>
+<l>dev_resize_window_fit_image (Image2, 0, 0, -1, -1)</l>
+<l>dev_display (Image2)</l>
+<l>Message := 'Test image for binary_threshold'</l>
+<l>disp_message (WindowHandle1, Message, 'window', 12, 12, 'black', 'true')</l>
+<l>binary_threshold (Image2, Region2, 'smooth_histo', 'light', UsedThreshold)</l>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
