@@ -37,9 +37,25 @@
 <l>Message := 'Test image for binary_threshold'</l>
 <l>disp_message (WindowHandle1, Message, 'window', 12, 12, 'black', 'true')</l>
 <l>binary_threshold (Image2, Region2, 'smooth_histo', 'light', UsedThreshold)</l>
-<c></c>
-<c></c>
-<c></c>
+<c>*</c>
+<c>* 7-4</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>read_image (Image3, 'fabrik')</l>
+<l>dev_set_draw ('margin')</l>
+<l>get_image_pointer1 (Image3, Pointer, Type, Width1, Height1)</l>
+<l>dev_open_window (0, 0, Width1*0.4, Height1*0.4, 'black', WindowHandle2)</l>
+<l>dev_display (Image3)</l>
+<l>MaxVariance := 0.0</l>
+<l>for ImgThreshold := 1 to 255 by 1</l>
+<l>    dev_display (Image3)</l>
+<l>    threshold (Image3, Region3, ImgThreshold, 255)</l>
+<l>    area_center (Region3, Area, Row, Column)</l>
+<l>    intensity (Region3, Image3, Mean, Deviation)</l>
+<l>    complement (Region3, RegionComplement)</l>
+<l>    area_center (RegionComplement, Area1, Row1, Column1)</l>
+<l>    intensity (RegionComplement, Image3, Mean1, Deviation1)</l>
+<l>endfor</l>
 <c></c>
 </body>
 <docu id="main">
