@@ -55,7 +55,16 @@
 <l>    complement (Region3, RegionComplement)</l>
 <l>    area_center (RegionComplement, Area1, Row1, Column1)</l>
 <l>    intensity (RegionComplement, Image3, Mean1, Deviation1)</l>
+<l>    Otsu := Area*1.0/[Width1*Height1]*Area1*1.0/[Width1*Height1]*pow(Mean-Mean1,2)</l>
+<l>    if (Otsu&gt;MaxVariance)</l>
+<l>        MaxVariance := Otsu</l>
+<l>        BestThreshold := ImgThreshold</l>
+<l>    endif</l>
 <l>endfor</l>
+<l>dev_display (Image3)</l>
+<l>dev_set_color ('green')</l>
+<l>dev_set_draw ('fill')</l>
+<l>threshold (Image3, Region4, BestThreshold, 255)</l>
 <c></c>
 </body>
 <docu id="main">
