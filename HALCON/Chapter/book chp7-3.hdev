@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* 7-13</c>
+<c>*</c>
+<l>read_image (Image, 'fabrik')</l>
+<l>rectangle1_domain (Image, ImageReduced, 170, 280, 310, 370)</l>
+<l>sobel_dir (ImageReduced, EdgeAmplitude, EdgeDirection, 'sum_abs', 3)</l>
+<l>dev_set_color ('red')</l>
+<l>threshold (EdgeAmplitude, Region, 55, 255)</l>
+<l>reduce_domain (EdgeDirection, Region, ImageReduced1)</l>
+<l>hough_lines_dir (ImageReduced1, HoughImage, Lines, 4, 2, 'mean', 3, 25, 5, 5, 'true', Angle, Dist)</l>
+<l>gen_region_hline (Regions, Angle, Dist)</l>
+<l>dev_display (Image)</l>
+<l>dev_set_colored (12)</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_display (Regions)</l>
+<l>dev_set_draw ('fill')</l>
+<l>dev_display (Lines)</l>
+<c></c>
+<c>*</c>
+<c>*</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>read_image (Image1, 'E:/Github/Algorithm/HALCON/Images/ex4.3.png')</l>
+<l>dev_open_window_fit_image (Image1, 0, 0, -1, -1, WindowHandle)</l>
+<l>dev_display (Image1)</l>
+<l>* edges_image (Image1, ImaAmp, ImaDir, 'canny', 0.5, 'nms', 20, 40)</l>
+<l>threshold (Image1, Region1, 0, 20)</l>
+<l>* fill_up (Region1, RegionFillUp)</l>
+<l>skeleton (Region1, Skeleton)</l>
+<l>hough_lines (Skeleton, 4, 100, 5, 5, Angle1, Dist1)</l>
+<l>gen_region_hline (Regions1, Angle1, Dist1)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

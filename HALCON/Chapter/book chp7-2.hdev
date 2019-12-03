@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* 7-5</c>
+<c>*</c>
+<l>read_image (Image, 'fabrik')</l>
+<l>roberts (Image, ImageRoberts, 'gradient_max')</l>
+<l>threshold (ImageRoberts, Region, 9, 255)</l>
+<l>skeleton (Region, Skeleton)</l>
+<l>dev_display (Image)</l>
+<l>dev_set_color ('red')</l>
+<l>dev_display (Skeleton)</l>
+<c>*</c>
+<c>* 7-6</c>
+<c>*</c>
+<l>read_image (Image, 'fabrik')</l>
+<l>* roberts (Image, ImageRoberts, 'gradient_max')</l>
+<l>sobel_amp (Image, EdgeAmplitude, 'sum_abs', 3)</l>
+<l>threshold (EdgeAmplitude, Region, 10, 255)</l>
+<l>skeleton (Region, Skeleton)</l>
+<l>dev_display (Image)</l>
+<l>dev_set_color ('red')</l>
+<l>dev_display (Skeleton)</l>
+<c>*</c>
+<c>* 7-7</c>
+<c>*</c>
+<l>read_image (Image, 'fabrik')</l>
+<l>prewitt_amp (Image, ImageEdgeAmp)</l>
+<l>threshold (ImageEdgeAmp, Region, 20, 255)</l>
+<l>skeleton (Region, Skeleton)</l>
+<l>dev_display (Image)</l>
+<l>dev_set_color ('red')</l>
+<l>dev_display (Skeleton)</l>
+<c>*</c>
+<c>* 7-8</c>
+<c>*</c>
+<l>read_image (Image, 'fabrik')</l>
+<l>kirsch_amp (Image, ImageEdgeAmp)</l>
+<l>threshold (ImageEdgeAmp, Region, 70, 255)</l>
+<l>skeleton (Region, Skeleton)</l>
+<l>dev_display (Image)</l>
+<l>dev_set_color ('red')</l>
+<l>dev_display (Skeleton)</l>
+<c>*</c>
+<c>* 7-9</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>read_image (Image1, 'mreut')</l>
+<l>get_image_size (Image1, Width, Height)</l>
+<l>dev_open_window (0, 0, Width, Height, 'black', WindowHandle)</l>
+<l>set_display_font (WindowHandle, 14, 'mono', 'true', 'false')</l>
+<l>laplace_of_gauss (Image1, ImageLaplace, 5)</l>
+<l>zero_crossing (ImageLaplace, RegionCrossing)</l>
+<c>*</c>
+<c>* 7-10</c>
+<c>*</c>
+<l>read_image (Image, 'fabrik')</l>
+<l>edges_image (Image, ImaAmp, ImaDir, 'canny', 0.5, 'nms', 12, 22)</l>
+<l>threshold (ImaAmp, Region, 1, 255)</l>
+<l>skeleton (Region, Skeleton)</l>
+<l>dev_display (Image)</l>
+<l>dev_set_color ('red')</l>
+<l>dev_display (Skeleton)</l>
+<c>*</c>
+<c>* 7-11</c>
+<c>*</c>
+<l>read_image (Image, 'fabrik')</l>
+<l>edges_sub_pix (Image, Edges, 'sobel', 0.5, 7, 22)</l>
+<l>dev_set_part (0, 0, 511, 511)</l>
+<l>dev_display (Image)</l>
+<l>dev_set_colored (6)</l>
+<l>dev_display (Edges)</l>
+<c>*</c>
+<c>* 7-12</c>
+<c>*</c>
+<l>read_image (Image2, 'fabrik')</l>
+<l>dev_set_colored (12)</l>
+<l>regiongrowing (Image2, Regions, 1, 1, 1, 1000)</l>
+<l>gen_empty_region (EmptyRegion)</l>
+<l>expand_gray (Regions, Image2, EmptyRegion, RegionExpand, 'maximal', 'image', 4)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
