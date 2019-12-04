@@ -13,9 +13,16 @@
 <l>difference (ROI_1, ROI_0, RegionDifference)</l>
 <l>reduce_domain (Image, RegionDifference, ImageReduced)</l>
 <l>equ_histo_image (ImageReduced, ImageEquHisto)</l>
-<l>median_image (ImageEquHisto, ImageMedian, 'square', 3, 'mirrored')</l>
-<c></c>
-<l>laplace (ImageReduced, ImageLaplace, 'absolute', 3, 'n_4')</l>
+<l>* mean_image (ImageEquHisto, ImageMean, 15, 15)</l>
+<l>gray_range_rect (ImageEquHisto, ImageResult, 15, 15)</l>
+<l>invert_image (ImageResult, ImageInvert)</l>
+<l>threshold (ImageInvert, Regions, 0, 41)</l>
+<l>connection (Regions, ConnectedRegions)</l>
+<l>dilation_circle (ConnectedRegions, RegionDilation, 3.5)</l>
+<l>union1 (RegionDilation, RegionUnion)</l>
+<l>erosion_circle (RegionUnion, RegionErosion, 3.5)</l>
+<l>connection (RegionErosion, ConnectedRegions1)</l>
+<l>select_shape (ConnectedRegions1, SelectedRegions, ['area','width','height'], 'and', [2000,70,70], [15000,300,300])</l>
 </body>
 <docu id="main">
 <parameters/>
