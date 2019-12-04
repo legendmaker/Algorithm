@@ -25,7 +25,7 @@
 <c>*</c>
 <c>*</c>
 <l>dev_close_window ()</l>
-<l>read_image (Image1, 'E:/Github/Algorithm/HALCON/Images/ex4.3.png')</l>
+<l>read_image (Image1, 'E:/Repos/Algorithm/HALCON/Images/ex4.3.png')</l>
 <l>dev_open_window_fit_image (Image1, 0, 0, -1, -1, WindowHandle)</l>
 <l>dev_display (Image1)</l>
 <l>* edges_image (Image1, ImaAmp, ImaDir, 'canny', 0.5, 'nms', 20, 40)</l>
