@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'cap_exposure/cap_exposure_03')</l>
+<l>get_image_size (Image, Width, Height)</l>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, Width, Height, 'black', WindowHandle)</l>
+<l>dev_update_window ('off')</l>
+<l>gen_circle (Circle, 246, 336, 150)</l>
+<l>area_center (Circle, Area, Row, Column)</l>
+<l>reduce_domain (Image, Circle, ImageReduced)</l>
+<l>create_ncc_model (ImageReduced, 'auto', 0, 0, 'auto', 'use_polarity', ModelID)</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_display (Image)</l>
+<l>dev_display (Circle)</l>
+<l>stop ()</l>
+<l>Rows := []</l>
+<l>Cols := []</l>
+<l>for J := 1 to 10 by 1</l>
+<l>    read_image (Image1, 'cap_exposure/cap_exposure_'+J$'02')</l>
+<l>    find_ncc_model (Image1, ModelID, 0, 0, 0.5, 1, 0.5, 'true', 0, Row1, Column1, Angle, Score)</l>
+<l>    vector_angle_to_rigid (Row, Column, 0, Row1, Column1, 0, HomMat2D)</l>
+<l>    affine_trans_region (Circle, RegionAffineTrans, HomMat2D, 'nearest_neighbor')</l>
+<l>    Rows := [Rows,Row1]</l>
+<l>    Cols := [Cols,Column1]</l>
+<l>    dev_display (Image1)</l>
+<l>    dev_display (RegionAffineTrans)</l>
+<l>    stop ()</l>
+<l>endfor</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
