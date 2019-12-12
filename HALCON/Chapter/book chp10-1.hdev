@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_update_window ('off')</l>
+<l>read_image (Bottle, 'bottle2')</l>
+<l>get_image_size (Bottle, Width, Height)</l>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 2*Width, 2*Height, 'black', WindowHandle)</l>
+<l>set_display_font (WindowHandle, 20, 'mono', 'true', 'false')</l>
+<l>dev_display (Bottle)</l>
+<l>disp_continue_message (WindowHandle, 'black', 'true')</l>
+<l>threshold (Bottle, Region, 0, 95)</l>
+<l>fill_up_shape (Region, RegionFillUp, 'area', 1, 5)</l>
+<l>opening_circle (RegionFillUp, RegionOpening, 2.5)</l>
+<l>dev_display (Bottle)</l>
+<l>fill_up (RegionOpening, RegionFillUp1)</l>
+<l>opening_rectangle1 (RegionFillUp1, RegionOpening1, 1, 7)</l>
+<l>connection (RegionOpening1, ConnectedRegions)</l>
+<l>intersection (ConnectedRegions, RegionOpening, RegionIntersection)</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 300, 9999)</l>
+<l>sort_region (SelectedRegions, SortedRegions, 'first_point', 'true', 'column')</l>
+<l>read_ocr_class_mlp ('Industrial_0-9A-Z_NoRej.omc', OCRHandle)</l>
+<l>do_ocr_multi_class_mlp (SortedRegions, Bottle, OCRHandle, Class, Confidence)</l>
+<l>area_center (SortedRegions, Area, Row, Column)</l>
+<l>set_display_font (WindowHandle, 27, 'mono', 'true', 'false')</l>
+<l>for i := 0 to |Class|-1 by 1</l>
+<l>    disp_message (WindowHandle, Class[i], 'image', 80, Column[i]-3, 'green', 'false')</l>
+<l>endfor</l>
+<l>clear_ocr_class_mlp (OCRHandle)</l>
+<l>dev_update_window ('on')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -19,6 +19,11 @@
 <l>closing_rectangle1 (Regions, RegionClosing, 10, 10)</l>
 <l>connection (RegionClosing, ConnectedRegions)</l>
 <l>select_shape (ConnectedRegions, SelectedRegions, ['area','width','height'], 'and', [2000,70,70], [15000,300,300])</l>
+<l>dev_close_window ()</l>
+<l>dev_open_window_fit_image (Image, 0, 0, -1, -1, WindowHandle1)</l>
+<l>dev_display (Image)</l>
+<l>dev_display (SelectedRegions)</l>
+<c></c>
 </body>
 <docu id="main">
 <parameters/>
