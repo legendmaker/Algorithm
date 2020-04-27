@@ -13,16 +13,17 @@
 <l>difference (ROI_1, ROI_0, RegionDifference)</l>
 <l>reduce_domain (Image, RegionDifference, ImageReduced)</l>
 <l>equ_histo_image (ImageReduced, ImageEquHisto)</l>
-<l>* mean_image (ImageEquHisto, ImageMean, 15, 15)</l>
 <l>gray_range_rect (ImageEquHisto, ImageResult, 15, 15)</l>
 <l>invert_image (ImageResult, ImageInvert)</l>
 <l>threshold (ImageInvert, Regions, 0, 41)</l>
-<l>connection (Regions, ConnectedRegions)</l>
-<l>dilation_circle (ConnectedRegions, RegionDilation, 3.5)</l>
-<l>union1 (RegionDilation, RegionUnion)</l>
-<l>erosion_circle (RegionUnion, RegionErosion, 3.5)</l>
-<l>connection (RegionErosion, ConnectedRegions1)</l>
-<l>select_shape (ConnectedRegions1, SelectedRegions, ['area','width','height'], 'and', [2000,70,70], [15000,300,300])</l>
+<l>closing_rectangle1 (Regions, RegionClosing, 10, 10)</l>
+<l>connection (RegionClosing, ConnectedRegions)</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, ['area','width','height'], 'and', [2000,70,70], [15000,300,300])</l>
+<l>dev_close_window ()</l>
+<l>dev_open_window_fit_image (Image, 0, 0, -1, -1, WindowHandle1)</l>
+<l>dev_display (Image)</l>
+<l>dev_display (SelectedRegions)</l>
+<c></c>
 </body>
 <docu id="main">
 <parameters/>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_update_off ()</l>
+<l>dev_close_window ()</l>
+<l>read_image (Image, 'wafer/wafer_mirror_dies_01')</l>
+<l>dev_open_window_fit_image (Image, 0, 0, -1, -1, WindowHandle)</l>
+<l>set_display_font (WindowHandle, 16, 'mono', 'true', 'false')</l>
+<l>dev_set_line_width (3)</l>
+<l>dev_display (Image)</l>
+<l>disp_message (WindowHandle, 'Determine the position of mirror dies on the wafer', 'window', 12, 12, 'black', 'true')</l>
+<l>disp_continue_message (WindowHandle, 'black', 'true')</l>
+<l>stop ()</l>
+<l>gen_rectangle1 (Rectangle, 362, 212, 414, 262)</l>
+<l>reduce_domain (Image, Rectangle, ImageReduced)</l>
+<l>create_shape_model (ImageReduced, 'auto', rad(0), rad(1), 'auto', 'auto', 'use_polarity', 'auto', 'auto', ModelID)</l>
+<l>get_shape_model_contours (ModelContours, ModelID, 1)</l>
+<l>for Index := 1 to 4 by 1</l>
+<l>    read_image (Image1, 'wafer/wafer_mirror_dies_'+Index$'02')</l>
+<l>    count_seconds (S1)</l>
+<l>    find_shape_model (Image1, ModelID, rad(0), rad(1), 0.5, 0, 0, 'least_squares', 2, 0.5, Row, Column, Angle, Score)</l>
+<l>    count_seconds (S2)</l>
+<l>    Runtime := (S2-S1)*1000</l>
+<l>    gen_cross_contour_xld (Cross, Row, Column, 6, rad(45))</l>
+<l>    dev_display (Image1)</l>
+<l>    dev_display_shape_matching_results (ModelID, 'lime green', Row, Column, Angle, 1, 1, 0)</l>
+<l>    dev_set_color ('orange')</l>
+<l>    dev_display (Cross)</l>
+<l>    disp_message (WindowHandle, |Score|+'mirror dies located in'+Runtime$'.1f'+'ms', 'window', 12, 12, 'black', 'true')</l>
+<l>    if (Index!=4)</l>
+<l>        disp_continue_message (WindowHandle, 'black', 'true')</l>
+<l>        stop ()</l>
+<l>    endif</l>
+<l>endfor</l>
+<l>clear_shape_model (ModelID)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

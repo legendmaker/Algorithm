@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<c>*</c>
+<c>* 9-1</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>read_image (Image, 'E:/Github/Algorithm/HALCON/Images/膨胀腐蚀.png')</l>
+<l>get_image_size (Image, Width, Height)</l>
+<l>dev_open_window (0, 0, Width, Height, 'white', WindowHandle)</l>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<l>threshold (GrayImage, Region, 0, 100)</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>dev_set_color ('black')</l>
+<l>erosion_circle (ConnectedRegions, RegionErosion, 3)</l>
+<l>erosion_rectangle1 (ConnectedRegions, RegionDilation1, 3, 3)</l>
+<l>gen_circle (Circle, 50, 50, 3)</l>
+<l>erosion1 (ConnectedRegions, Circle, RegionDilation2, 1)</l>
+<l>erosion2 (RegionDilation2, Circle, RegionDilation3, 0, 0, 1)</l>
+<c>*</c>
+<c>* 9-2</c>
+<c>*</c>
+<l>dev_close_window ()</l>
+<l>read_image (Image, 'E:/Github/Algorithm/HALCON/Images/膨胀腐蚀.png')</l>
+<l>get_image_size (Image, Width, Height)</l>
+<l>dev_open_window (0, 0, Width, Height, 'white', WindowHandle)</l>
+<l>rgb1_to_gray (Image, GrayImage)</l>
+<l>threshold (GrayImage, Region, 0, 100)</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>dev_set_color ('black')</l>
+<l>dilation_circle (ConnectedRegions, RegionDilation, 3)</l>
+<l>dilation_rectangle1 (ConnectedRegions, RegionDilation1, 3, 3)</l>
+<l>gen_circle (Circle, 50, 50, 3)</l>
+<l>dilation1 (ConnectedRegions, Circle, RegionDilation2, 1)</l>
+<l>dilation2 (RegionDilation2, Circle, RegionDilation3, 0, 0, 1)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
