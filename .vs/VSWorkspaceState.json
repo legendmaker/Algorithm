@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\HALCON",
+    "\\HALCON\\Chapter",
+    "\\HALCON\\Images"
   ],
+  "SelectedNode": "\\HALCON\\Chapter\\book chp10-1.hdev",
   "PreviewInSolutionExplorer": false
 }
