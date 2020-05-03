@@ -23,7 +23,6 @@
 <l>dev_open_window_fit_image (Image, 0, 0, -1, -1, WindowHandle1)</l>
 <l>dev_display (Image)</l>
 <l>dev_display (SelectedRegions)</l>
-<c></c>
 </body>
 <docu id="main">
 <parameters/>
